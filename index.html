@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ひるブル団｜団員募集中</title>
+<meta name="description" content="お昼にアサルトタイム（12:00〜14:00）がある騎空団「ひるブル団」の団員募集ページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky-1:#5DB8F0;      /* 空の青（明るい） */
+    --sky-2:#2E8FD8;      /* 空の青（濃い） */
+    --sky-bg:#EEF7FD;     /* ページ背景 */
+    --navy:#1D3A5C;       /* 見出し */
+    --text:#2A3B4F;       /* 本文 */
+    --sub:#5A6B80;        /* 補足 */
+    --yellow:#FFD23F;     /* 差し色 */
+    --yellow-deep:#F2B705;
+    --card:#FFFFFF;
+    --line:#D6E8F5;
+    --radius:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;
+    font-weight:500;color:var(--text);background:var(--sky-bg);
+    font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--sky-2)}
+
+  /* ===== ヒーロー ===== */
+  .hero{
+    position:relative;overflow:hidden;
+    background:#8ED0F5 url("img/top.jpg") center 40% / cover no-repeat;
+    color:#fff;text-align:center;padding:40px 16px 0;
+    min-height:min(56vw,640px);display:flex;flex-direction:column;align-items:center;
+  }
+  .sun{position:absolute;top:28px;right:9%;width:84px;height:84px;border-radius:50%;
+    background:var(--yellow);box-shadow:0 0 0 14px rgba(255,210,63,.25),0 0 0 30px rgba(255,210,63,.12)}
+  .cloud{position:absolute;background:#fff;border-radius:999px;opacity:.95}
+  .cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+  .c1{width:140px;height:40px;top:120px;left:-20px}
+  .c1::before{width:60px;height:60px;top:-28px;left:24px}
+  .c1::after{width:44px;height:44px;top:-18px;left:72px}
+  .c2{width:110px;height:32px;top:60px;left:62%;opacity:.8}
+  .c2::before{width:46px;height:46px;top:-22px;left:18px}
+  .c2::after{width:34px;height:34px;top:-14px;left:56px}
+  .c3{width:220px;height:60px;bottom:-14px;right:-30px}
+  .c3::before{width:100px;height:100px;top:-50px;left:40px}
+  .c3::after{width:70px;height:70px;top:-32px;left:120px}
+  .c4{width:260px;height:70px;bottom:-24px;left:-60px}
+  .c4::before{width:110px;height:110px;top:-56px;left:60px}
+  .c4::after{width:80px;height:80px;top:-36px;left:150px}
+
+  .badge{display:inline-block;background:var(--yellow);color:var(--navy);
+    font-weight:900;font-size:14px;padding:4px 16px;border-radius:999px;letter-spacing:.05em}
+  .hero h1{font-size:clamp(44px,12vw,72px);font-weight:900;line-height:1.2;margin:16px 0 8px;
+    text-shadow:0 3px 0 rgba(29,58,92,.18);letter-spacing:.04em}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:28%;
+    background:linear-gradient(180deg,rgba(238,247,253,0) 0%,var(--sky-bg) 100%);pointer-events:none}
+  .hero .logo{display:block;width:min(520px,88vw);height:auto;margin:0 auto;
+    filter:drop-shadow(0 6px 14px rgba(29,58,92,.35))}
+  .hero h1{margin:16px 0 0}
+  .lead{text-align:center;padding:8px 16px 8px;max-width:760px;margin:0 auto}
+  .tagline{font-size:clamp(17px,4.6vw,22px);font-weight:900;color:var(--navy);text-shadow:0 0 12px rgba(255,255,255,.9)}
+  .at{display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+    background:#fff;border:2px solid var(--line);color:var(--navy);border-radius:999px;padding:8px 20px;font-weight:700}
+  .at b{font-size:20px;color:var(--sky-2)}
+  .lead .cta{margin-top:24px}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);text-decoration:none;
+    font-weight:900;font-size:17px;padding:14px 32px;border-radius:999px;
+    box-shadow:0 4px 0 var(--yellow-deep);transition:transform .1s}
+  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--yellow-deep)}
+  .hero > *{position:relative;z-index:1}
+
+  /* ===== 目次 ===== */
+  nav.toc{display:flex;gap:8px;overflow-x:auto;padding:16px;max-width:760px;margin:0 auto;
+    scrollbar-width:none}
+  nav.toc::-webkit-scrollbar{display:none}
+  nav.toc a{flex:none;background:#fff;border:2px solid var(--line);color:var(--navy);
+    text-decoration:none;font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px}
+
+  /* ===== セクション ===== */
+  main{max-width:760px;margin:0 auto;padding:8px 16px 48px}
+  section{background:var(--card);border-radius:var(--radius);padding:32px 24px;margin-top:24px;
+    box-shadow:0 2px 0 var(--line)}
+  h2{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;color:var(--navy);
+    line-height:1.4;margin-bottom:16px}
+  h2 .ico{flex:none;width:40px;height:40px;border-radius:50%;background:var(--sky-bg);
+    display:grid;place-items:center;font-size:20px}
+  h3{font-size:18px;font-weight:900;color:var(--navy);margin:20px 0 4px}
+  p + p{margin-top:12px}
+  .note{color:var(--sub);font-size:15px}
+
+  /* 目標 */
+  .goals{display:grid;gap:12px;margin-top:8px}
+  .goal{border-radius:18px;padding:16px 20px;background:var(--sky-bg)}
+  .goal .when{display:inline-block;font-size:13px;font-weight:900;color:#fff;background:var(--sky-2);
+    border-radius:999px;padding:2px 12px}
+  .goal.next .when{background:var(--yellow);color:var(--navy)}
+  .goal .what{font-size:19px;font-weight:900;color:var(--navy);margin-top:6px}
+
+  /* チェックリスト */
+  ul.check{list-style:none;display:grid;gap:10px}
+  ul.check li{position:relative;padding-left:34px}
+  ul.check li::before{content:"";position:absolute;left:0;top:5px;width:22px;height:22px;border-radius:50%;
+    background:var(--yellow) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%231D3A5C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+
+  /* 番号リスト */
+  ol.num{list-style:none;counter-reset:n;display:grid;gap:14px}
+  ol.num > li{counter-increment:n;position:relative;padding-left:44px}
+  ol.num > li::before{content:counter(n);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;
+    background:var(--sky-2);color:#fff;font-weight:900;display:grid;place-items:center;font-size:15px}
+
+  /* ルール */
+  .rules{display:grid;gap:12px}
+  .rule{border:2px solid var(--line);border-radius:18px;padding:16px 18px}
+  .rule h3{margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  .rule h3 .n{flex:none;width:28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;
+    display:grid;place-items:center;font-size:14px}
+  .rule .sub{margin-top:8px;background:var(--sky-bg);border-radius:12px;padding:10px 14px;font-size:15px}
+  .rule .sub b{color:var(--navy)}
+
+  /* 退団 */
+  .why{background:#FFF8DC;border-radius:18px;padding:16px 20px;margin-bottom:16px}
+  .why b{color:var(--navy)}
+
+  /* 入団の流れ */
+  .steps{list-style:none;counter-reset:s;display:grid;gap:0}
+  .steps li{counter-increment:s;position:relative;padding:0 0 24px 56px}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:40px;height:40px;border-radius:50%;
+    background:var(--yellow);color:var(--navy);font-weight:900;font-size:18px;display:grid;place-items:center}
+  .steps li::after{content:"";position:absolute;left:19px;top:40px;bottom:2px;width:2px;background:var(--line)}
+  .steps li:last-child{padding-bottom:0}
+  .steps li:last-child::after{display:none}
+  .idbox{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    margin-top:10px;background:var(--sky-bg);border-radius:14px;padding:10px 14px}
+  .idbox .id{font-size:22px;font-weight:900;color:var(--navy);letter-spacing:.08em}
+  .copy{border:none;background:var(--navy);color:#fff;font-family:inherit;font-weight:700;font-size:14px;
+    padding:8px 16px;border-radius:999px;cursor:pointer}
+
+  /* FAQ */
+  details{border-bottom:2px solid var(--line);padding:14px 0}
+  details:last-child{border-bottom:none}
+  summary{cursor:pointer;font-weight:900;color:var(--navy);list-style:none;position:relative;padding-right:28px}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"Q.";color:var(--sky-2);margin-right:6px}
+  summary::after{content:"＋";position:absolute;right:0;top:0;color:var(--sky-2)}
+  details[open] summary::after{content:"－"}
+  details p{margin-top:8px;padding-left:24px}
+
+  /* 団長より */
+  .message{background:linear-gradient(180deg,#fff 0%,#F4FAFE 100%)}
+  .message .sign{text-align:right;font-weight:900;color:var(--navy);margin-top:16px}
+
+  /* 団長プロフィール */
+  .profile{margin-top:28px;border-top:2px dashed var(--line);padding-top:8px}
+  .profile dl{display:grid;gap:10px;margin-top:12px}
+  .profile dl > div{display:grid;grid-template-columns:7.5em 1fr;gap:8px;align-items:start}
+  .profile dt{font-weight:900;color:var(--sub);font-size:14px;padding-top:3px}
+  .profile dd{display:flex;flex-wrap:wrap;gap:6px}
+  .profile .tag{background:var(--sky-bg);color:var(--navy);font-weight:700;font-size:14px;
+    border-radius:999px;padding:2px 12px}
+  .xembed{margin-top:24px;display:flex;justify-content:center}
+  .xembed .twitter-tweet{margin:0 !important}
+  .xembed blockquote a{font-weight:700}
+
+  footer{text-align:center;color:var(--sub);font-size:13px;padding:24px 16px 40px;line-height:1.7}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);
+    background:var(--navy);color:#fff;padding:10px 20px;border-radius:999px;font-weight:700;font-size:14px;
+    transition:transform .25s,opacity .25s;z-index:10;opacity:0;pointer-events:none}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+  @media (max-width:639px){ .hero{min-height:440px;background-position:28% center;padding-top:32px} }
+  @media (min-width:640px){
+    section{padding:40px 40px}
+    .goals{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="badge">団員募集中</span>
+  <h1><img class="logo" src="img/logo.png" alt="ひるブル団" width="1000" height="383"></h1>
+</header>
+
+<div class="lead">
+  <p class="tagline">お昼に集まって、<br>マイペースに空を旅しよう。</p>
+  <div class="at">アサルトタイム <b>12:00〜14:00</b></div>
+  <div class="cta"><a class="btn" href="#join">入団の流れを見る</a></div>
+</div>
+
+<nav class="toc" aria-label="目次">
+  <a href="#about">どんな団？</a>
+  <a href="#goal">目標</a>
+  <a href="#welcome">歓迎する方</a>
+  <a href="#rules">ルール</a>
+  <a href="#leave">退団について</a>
+  <a href="#join">入団の流れ</a>
+  <a href="#faq">よくある質問</a>
+</nav>
+
+<main>
+
+  <section id="about">
+    <h2><span class="ico">☀️</span>どんな団？</h2>
+    <p>お昼にアサルトタイムが欲しい人が集まる団です。</p>
+    <p>リアル優先で、自分のペースで遊べます。</p>
+    <p>アクティブは団長を含めて3〜4人の、少人数の団です。手伝ってほしいクエストがあれば、気軽にマルチを貼ってください。</p>
+    <p class="note">連絡は団チャだけで行います。Discordなどの外部サービスは使いません。</p>
+  </section>
+
+  <section id="goal">
+    <h2><span class="ico">🏁</span>目標</h2>
+    <p>古戦場で、少しずつ上を目指していきます。</p>
+    <div class="goals">
+      <div class="goal">
+        <span class="when">いま</span>
+        <p class="what">本戦出場</p>
+      </div>
+      <div class="goal next">
+        <span class="when">人が増えたら</span>
+        <p class="what">A本戦突破</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="welcome">
+    <h2><span class="ico">🤝</span>こんな方を歓迎します</h2>
+    <ul class="check">
+      <li>お昼に遊ぶことが多い方</li>
+      <li>リアルを優先して、自分のペースで遊びたい方</li>
+      <li>初心者の方</li>
+      <li>友だちと一緒に入りたい方（セット入団）</li>
+    </ul>
+
+    <h3>入団の条件</h3>
+    <ol class="num" style="margin-top:12px">
+      <li>ランクが100以上であること</li>
+      <li>社会常識があること</li>
+      <li>グラブルが好きなこと</li>
+    </ol>
+  </section>
+
+  <section id="rules">
+    <h2><span class="ico">📘</span>団のルール</h2>
+    <p class="note" style="margin-bottom:16px">みんなが気持ちよく遊べるように、5つだけお願いしています。</p>
+    <div class="rules">
+      <div class="rule">
+        <h3><span class="n">1</span>団サポ</h3>
+        <p>切れていたら、誰でも発動してください。</p>
+        <div class="sub">
+          <b>ふだん</b>：ポーション・ドロップ・奥義を固定します。残りの1枠は、発動する人が自由に選んでください。<br>
+          <b>古戦場の期間中</b>：ポーション・ドロップ・奥義・有利属性攻撃にします。
+        </div>
+      </div>
+      <div class="rule">
+        <h3><span class="n">2</span>自発放置</h3>
+        <p>救援に入った人の負担になるので、しないでください。</p>
+      </div>
+      <div class="rule">
+        <h3><span class="n">3</span>マルチ（団栄誉）</h3>
+        <p>火力や立ち回りは気にせず、救援に入ってください。</p>
+        <p>ディールは、自発した人を優先してください。</p>
+        <p>救援のあとに貼り返すルールはありません。</p>
+        <div class="sub">団栄誉を確実に稼ぎたいときは、部屋を立ててください。部屋のルールは、集まった人で決めてから始めてください。</div>
+      </div>
+      <div class="rule">
+        <h3><span class="n">4</span>団チャ</h3>
+        <p>ログインしたら、さかのぼって連絡事項を読んでください。</p>
+        <p>連絡事項には、返事をお願いします。</p>
+      </div>
+      <div class="rule">
+        <h3><span class="n">5</span>古戦場</h3>
+        <p>ノルマはありません。</p>
+        <p>参加できないときは、必ず事前に団チャで伝えてください。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="leave">
+    <h2><span class="ico">🕊️</span>退団について</h2>
+    <div class="why">
+      この団は、都合で遊べない仲間がいるときに、<b>ほかのみんなで支え合う</b>ことを大切にしています。支え合うには、おたがいの様子がわかることが必要です。
+    </div>
+    <p>そのため、次の場合は退団をお願いすることがあります。</p>
+    <ol class="num" style="margin-top:12px">
+      <li>連絡がないまま、長い期間ログインしない</li>
+      <li>団チャの連絡事項に返事をしない</li>
+      <li>連絡がないまま、古戦場に参加しない</li>
+    </ol>
+    <p class="note" style="margin-top:16px">古戦場の貢献度の高い・低いは関係ありません。参加しているかどうかだけを見ています。</p>
+  </section>
+
+  <section id="join">
+    <h2><span class="ico">✉️</span>入団の流れ</h2>
+    <ol class="steps">
+      <li>
+        フレンドのID検索で、団長のIDを入力します。
+        <div class="idbox">
+          <span>団長 ミソシル<br><span class="id" id="leaderId">8900592</span></span>
+          <button class="copy" type="button" data-copy="8900592">IDをコピー</button>
+        </div>
+      </li>
+      <li>団長のプロフィールを開きます。</li>
+      <li>「i」ボタンから挨拶を送り、入団したいことを伝えます。</li>
+      <li>入団申請をします。</li>
+    </ol>
+  </section>
+
+  <section id="faq">
+    <h2><span class="ico">💬</span>よくある質問</h2>
+    <details>
+      <summary>ノルマはありますか？</summary>
+      <p>ありません。</p>
+    </details>
+    <details>
+      <summary>アサルトタイム以外に遊んでもいいですか？</summary>
+      <p>もちろんです。好きな時間に遊んでください。</p>
+    </details>
+    <details>
+      <summary>古戦場を休みたいときは、どうすればいいですか？</summary>
+      <p>団チャで事前に伝えてください。</p>
+    </details>
+    <details>
+      <summary>Discordは使いますか？</summary>
+      <p>使いません。連絡は団チャだけです。</p>
+    </details>
+  </section>
+
+  <section id="message" class="message">
+    <h2><span class="ico">🍙</span>団長より</h2>
+    <p>昼に飛ぶ騎空団「ひるブル団」へようこそ！</p>
+    <p>ここは「お昼にアサルトタイムが欲しいんだっ！」という人が集まる団です。</p>
+    <p>僕自身、絶対的にリアル優先です。リアルガチで！ なので、みなさんにも無理なプレイはお願いしません。</p>
+    <p>そのかわり、都合で稼げない仲間がいるときは「その分支えてやるぜぇ！」くらいの気持ちで、見捨てず、諦めず、一緒に支えてほしいです。</p>
+    <p>支え合いながら、一緒にイスタルシアを目指しましょう！ 困ったことがあれば、何でも気軽に相談してね。</p>
+    <p>ゲーム内での挨拶、お待ちしています！</p>
+    <p class="sign">団長 ミソシル</p>
+
+    <div class="profile">
+      <h3>団長プロフィール</h3>
+      <dl>
+        <div><dt>Rank</dt><dd>272</dd></div>
+        <div><dt>得意属性</dt><dd><span class="tag">水</span><span class="tag">光</span></dd></div>
+        <div><dt>プレイスタイル</dt><dd><span class="tag">まったり</span><span class="tag">古戦場</span></dd></div>
+        <div><dt>活動時間</dt><dd><span class="tag">毎日</span></dd></div>
+        <div><dt>ジョブ</dt><dd><span class="tag">ファイター・オリジン</span><span class="tag">ランサー・オリジン</span><span class="tag">ウィザード・オリジン</span></dd></div>
+        <div><dt>マルチバトル</dt><dd><span class="tag">クリア目的</span><span class="tag">周回</span><span class="tag">ドロップ</span></dd></div>
+      </dl>
+    </div>
+
+    <div class="xembed">
+      <blockquote class="twitter-tweet" data-lang="ja" data-dnt="true">
+        <a href="https://twitter.com/misoshiru_now/status/2098705325922934938">団長のプロフィール画像をXで見る</a>
+      </blockquote>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  このページは、騎空団「ひるブル団」の団員募集ページです。<br>
+  株式会社Cygamesおよび「グランブルーファンタジー」公式とは関係ありません。
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">IDをコピーしました</div>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.getAttribute('data-copy');
+      var done = function(){
+        var t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(function(){ t.classList.remove('show'); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function(){ fallback(text); done(); });
+      } else { fallback(text); done(); }
+    });
+  });
+  function fallback(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+</script>
+</body>
+</html>
