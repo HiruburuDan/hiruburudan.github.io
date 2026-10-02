@@ -7,7 +7,7 @@
 <meta name="description" content="お昼にアサルトタイム（12:00〜14:00）がある騎空団「ひるブル団」の団員募集ページです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --sky-1:#5DB8F0;      /* 空の青（明るい） */
@@ -168,6 +168,70 @@
   .xembed .twitter-tweet{margin:0 !important}
   .xembed blockquote a{font-weight:700}
 
+  /* ===== 見出し（参考サイトの部品：英字ラベル＋ライン＋丸ノード＋◆） ===== */
+  .sec-head{margin-bottom:18px}
+  .sec-head .en{display:flex;align-items:center;gap:8px;font-family:"Cinzel",serif;font-weight:700;
+    font-size:13px;letter-spacing:.14em;color:var(--sky-2);line-height:1.4}
+  .sec-head .en::before{content:"";width:8px;height:8px;background:var(--yellow);transform:rotate(45deg);
+    box-shadow:0 0 0 2px #fff,0 0 0 3px var(--yellow-deep)}
+  .sec-head h2{display:flex;align-items:center;gap:14px;margin:4px 0 0}
+  .sec-head h2 .t{flex:none}
+  .sec-head .hline{flex:1;min-width:24px;height:2px;position:relative;
+    background:linear-gradient(90deg,var(--sky-1),rgba(93,184,240,.15))}
+  .sec-head .hline::after{content:"";position:absolute;right:-6px;top:50%;width:12px;height:12px;border-radius:50%;
+    transform:translateY(-50%);background:var(--sky-2);box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--sky-1)}
+  @media (min-width:640px){
+    main > section:nth-of-type(even) .sec-head{text-align:right}
+    main > section:nth-of-type(even) .sec-head .en{justify-content:flex-end}
+    main > section:nth-of-type(even) .sec-head h2{flex-direction:row-reverse}
+    main > section:nth-of-type(even) .sec-head .hline{background:linear-gradient(270deg,var(--sky-1),rgba(93,184,240,.15))}
+    main > section:nth-of-type(even) .sec-head .hline::after{right:auto;left:-6px}
+  }
+  .en-orn{display:flex;align-items:center;justify-content:center;gap:12px;font-family:"Cinzel",serif;font-weight:700;
+    font-size:14px;letter-spacing:.2em;color:var(--sky-2);margin-bottom:8px}
+  .en-orn::before,.en-orn::after{content:"";width:9px;height:9px;background:var(--yellow);transform:rotate(45deg);
+    box-shadow:0 0 0 2px #fff,0 0 0 3px var(--yellow-deep)}
+
+  /* ===== ふわっと出る動き ===== */
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.is-in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){ .js .reveal{opacity:1;transform:none;transition:none} }
+
+  /* ===== トーン調整：シンプル＋少しかわいい（幼さを抑える） ===== */
+  :root{--radius:14px}
+  body{font-family:"Zen Kaku Gothic New","Hiragino Sans",sans-serif;font-weight:500;letter-spacing:.02em}
+  h2,h3,.goal .what,.btn,.at,.badge{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
+  h2{font-size:22px;font-weight:700}
+  h3,.goal .what,.btn,.badge{font-weight:700}
+  section{box-shadow:none;border:1px solid var(--line);padding:32px 24px}
+  .badge{font-size:12px;padding:3px 14px;letter-spacing:.12em}
+  .btn{box-shadow:none;border-radius:10px;padding:13px 36px;font-size:16px;transition:background .2s}
+  .btn:hover{background:var(--yellow-deep)}
+  .btn:active{transform:none;box-shadow:none}
+  .at{border:1px solid var(--line);border-radius:10px;font-weight:500}
+  .at b{font-weight:700}
+  nav.toc a{border:none;background:transparent;border-bottom:1px solid transparent;border-radius:0;
+    padding:4px 6px;font-weight:500;color:var(--sub)}
+  nav.toc a:hover{color:var(--navy);border-bottom-color:var(--yellow)}
+  .goal{border-radius:10px;background:transparent;border:1px solid var(--line)}
+  .goal .when{border-radius:4px;font-weight:700}
+  .rule{border-width:1px;border-radius:10px}
+  .rule h3 .n{border-radius:4px;width:24px;height:24px;font-size:13px;font-family:"Cinzel",serif}
+  .rule .sub{border-radius:8px}
+  .why{border-radius:10px;background:#FFFBEA;border-left:3px solid var(--yellow)}
+  ul.check li{padding-left:24px}
+  ul.check li::before{width:8px;height:8px;top:11px;left:4px;border-radius:0;transform:rotate(45deg);
+    background:var(--yellow);box-shadow:0 0 0 2px #fff,0 0 0 3px var(--yellow-deep)}
+  ol.num > li{padding-left:36px}
+  ol.num > li::before{width:24px;height:24px;font-size:13px;background:transparent;color:var(--sky-2);
+    border:1px solid var(--sky-1);top:3px;font-family:"Cinzel",serif;font-weight:700}
+  .steps li::before{background:#fff;border:1.5px solid var(--yellow-deep);font-family:"Cinzel",serif;font-size:16px;width:36px;height:36px}
+  .steps li::after{left:17px;top:36px;width:1px}
+  .idbox{border-radius:10px}
+  .copy{border-radius:8px}
+  .profile .tag{border-radius:4px;font-weight:500}
+  summary{font-weight:700}
+
   footer{text-align:center;color:var(--sub);font-size:13px;padding:24px 16px 40px;line-height:1.7}
 
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);
@@ -181,6 +245,7 @@
     .goals{grid-template-columns:1fr 1fr}
   }
 </style>
+<script>document.documentElement.className+=" js";</script>
 </head>
 <body>
 
@@ -190,6 +255,7 @@
 </header>
 
 <div class="lead">
+  <p class="en-orn"><span>Welcome Aboard</span></p>
   <p class="tagline">お昼に集まって、<br>マイペースに空を旅しよう。</p>
   <div class="at">アサルトタイム <b>12:00〜14:00</b></div>
   <div class="cta"><a class="btn" href="#join">入団の流れを見る</a></div>
@@ -207,16 +273,16 @@
 
 <main>
 
-  <section id="about">
-    <h2><span class="ico">☀️</span>どんな団？</h2>
+  <section class="reveal" id="about">
+    <div class="sec-head"><p class="en">About</p><h2><span class="t">どんな団？</span><span class="hline" aria-hidden="true"></span></h2></div>
     <p>お昼にアサルトタイムが欲しい人が集まる団です。</p>
     <p>リアル優先で、自分のペースで遊べます。</p>
     <p>アクティブは団長を含めて3〜4人の、少人数の団です。手伝ってほしいクエストがあれば、気軽にマルチを貼ってください。</p>
     <p class="note">連絡は団チャだけで行います。Discordなどの外部サービスは使いません。</p>
   </section>
 
-  <section id="goal">
-    <h2><span class="ico">🏁</span>目標</h2>
+  <section class="reveal" id="goal">
+    <div class="sec-head"><p class="en">Goal</p><h2><span class="t">目標</span><span class="hline" aria-hidden="true"></span></h2></div>
     <p>古戦場で、少しずつ上を目指していきます。</p>
     <div class="goals">
       <div class="goal">
@@ -230,8 +296,8 @@
     </div>
   </section>
 
-  <section id="welcome">
-    <h2><span class="ico">🤝</span>こんな方を歓迎します</h2>
+  <section class="reveal" id="welcome">
+    <div class="sec-head"><p class="en">Welcome</p><h2><span class="t">こんな方を歓迎します</span><span class="hline" aria-hidden="true"></span></h2></div>
     <ul class="check">
       <li>お昼に遊ぶことが多い方</li>
       <li>リアルを優先して、自分のペースで遊びたい方</li>
@@ -247,8 +313,8 @@
     </ol>
   </section>
 
-  <section id="rules">
-    <h2><span class="ico">📘</span>団のルール</h2>
+  <section class="reveal" id="rules">
+    <div class="sec-head"><p class="en">Rules</p><h2><span class="t">団のルール</span><span class="hline" aria-hidden="true"></span></h2></div>
     <p class="note" style="margin-bottom:16px">みんなが気持ちよく遊べるように、5つだけお願いしています。</p>
     <div class="rules">
       <div class="rule">
@@ -283,8 +349,8 @@
     </div>
   </section>
 
-  <section id="leave">
-    <h2><span class="ico">🕊️</span>退団について</h2>
+  <section class="reveal" id="leave">
+    <div class="sec-head"><p class="en">Leaving</p><h2><span class="t">退団について</span><span class="hline" aria-hidden="true"></span></h2></div>
     <div class="why">
       この団は、都合で遊べない仲間がいるときに、<b>ほかのみんなで支え合う</b>ことを大切にしています。支え合うには、おたがいの様子がわかることが必要です。
     </div>
@@ -297,8 +363,8 @@
     <p class="note" style="margin-top:16px">古戦場の貢献度の高い・低いは関係ありません。参加しているかどうかだけを見ています。</p>
   </section>
 
-  <section id="join">
-    <h2><span class="ico">✉️</span>入団の流れ</h2>
+  <section class="reveal" id="join">
+    <div class="sec-head"><p class="en">How to Join</p><h2><span class="t">入団の流れ</span><span class="hline" aria-hidden="true"></span></h2></div>
     <ol class="steps">
       <li>
         フレンドのID検索で、団長のIDを入力します。
@@ -313,8 +379,8 @@
     </ol>
   </section>
 
-  <section id="faq">
-    <h2><span class="ico">💬</span>よくある質問</h2>
+  <section class="reveal" id="faq">
+    <div class="sec-head"><p class="en">Q &amp; A</p><h2><span class="t">よくある質問</span><span class="hline" aria-hidden="true"></span></h2></div>
     <details>
       <summary>ノルマはありますか？</summary>
       <p>ありません。</p>
@@ -333,8 +399,8 @@
     </details>
   </section>
 
-  <section id="message" class="message">
-    <h2><span class="ico">🍙</span>団長より</h2>
+  <section class="reveal message" id="message">
+    <div class="sec-head"><p class="en">Message</p><h2><span class="t">団長より</span><span class="hline" aria-hidden="true"></span></h2></div>
     <p>昼に飛ぶ騎空団「ひるブル団」へようこそ！</p>
     <p>ここは「お昼にアサルトタイムが欲しいんだっ！」という人が集まる団です。</p>
     <p>僕自身、絶対的にリアル優先です。リアルガチで！ なので、みなさんにも無理なプレイはお願いしません。</p>
@@ -392,6 +458,16 @@
     try { document.execCommand('copy'); } catch(e) {}
     document.body.removeChild(ta);
   }
+
+  // スクロールでふわっと表示
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target);} });
+    },{rootMargin:'0px 0px -10% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
 </script>
 </body>
 </html>
