@@ -246,6 +246,13 @@
   .merit p{font-size:15px}
   @media (min-width:640px){ .merits{grid-template-columns:1fr 1fr} }
 
+  /* ===== CTA 2つ並び ＋ 目次を2段に ===== */
+  .lead .cta{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+  .btn-sub{background:#fff;color:var(--navy);border:1.5px solid var(--sky-1)}
+  .btn-sub:hover{background:var(--sky-bg)}
+  @media (max-width:420px){ .lead .cta .btn{padding:13px 18px;font-size:15px} }
+  nav.toc{flex-wrap:wrap;justify-content:flex-start;overflow-x:visible;row-gap:4px;column-gap:6px}
+
   footer{text-align:center;color:var(--sub);font-size:13px;padding:24px 16px 40px;line-height:1.7}
 
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);
@@ -272,7 +279,7 @@
   <p class="en-orn"><span>Welcome Aboard</span></p>
   <p class="tagline">ひとりの空って、<br>ちょっともったいない。<br>団に入ると、もっと遊べます。</p>
   <ul class="pills"><li>古戦場の本戦を目指す</li><li>団サポ最大レベル</li><li>ノルマなし</li></ul>
-  <div class="cta"><a class="btn" href="#join">入団の流れを見る</a></div>
+  <div class="cta"><a class="btn" href="#join">入団の流れを見る</a><a class="btn btn-sub" href="notes/">攻略ノートを見る</a></div>
 </div>
 
 <nav class="toc" aria-label="目次">
@@ -284,7 +291,6 @@
   <a href="#leave">退団について</a>
   <a href="#join">入団の流れ</a>
   <a href="#faq">よくある質問</a>
-  <a href="notes/">攻略ノート</a>
 </nav>
 
 <main>
