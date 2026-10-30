@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>はじめての召喚石ガイド｜ひるブル団 攻略ノート</title>
+<meta name="description" content="ひるブル団の初心者向けガイド。召喚石の「加護」のしくみと、両面・片面の選び方を、おすすめ動画と一緒に紹介します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky-1:#5DB8F0;      /* 空の青（明るい） */
+    --sky-2:#2E8FD8;      /* 空の青（濃い） */
+    --sky-bg:#EEF7FD;     /* ページ背景 */
+    --navy:#1D3A5C;       /* 見出し */
+    --text:#2A3B4F;       /* 本文 */
+    --sub:#5A6B80;        /* 補足 */
+    --yellow:#FFD23F;     /* 差し色 */
+    --yellow-deep:#F2B705;
+    --card:#FFFFFF;
+    --line:#D6E8F5;
+    --radius:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;
+    font-weight:500;color:var(--text);background:var(--sky-bg);
+    font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--sky-2)}
+
+  /* ===== ヒーロー ===== */
+  .hero{
+    position:relative;overflow:hidden;
+    background:#8ED0F5 url("img/top.jpg") center 40% / cover no-repeat;
+    color:#fff;text-align:center;padding:40px 16px 0;
+    min-height:min(56vw,640px);display:flex;flex-direction:column;align-items:center;
+  }
+  .sun{position:absolute;top:28px;right:9%;width:84px;height:84px;border-radius:50%;
+    background:var(--yellow);box-shadow:0 0 0 14px rgba(255,210,63,.25),0 0 0 30px rgba(255,210,63,.12)}
+  .cloud{position:absolute;background:#fff;border-radius:999px;opacity:.95}
+  .cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+  .c1{width:140px;height:40px;top:120px;left:-20px}
+  .c1::before{width:60px;height:60px;top:-28px;left:24px}
+  .c1::after{width:44px;height:44px;top:-18px;left:72px}
+  .c2{width:110px;height:32px;top:60px;left:62%;opacity:.8}
+  .c2::before{width:46px;height:46px;top:-22px;left:18px}
+  .c2::after{width:34px;height:34px;top:-14px;left:56px}
+  .c3{width:220px;height:60px;bottom:-14px;right:-30px}
+  .c3::before{width:100px;height:100px;top:-50px;left:40px}
+  .c3::after{width:70px;height:70px;top:-32px;left:120px}
+  .c4{width:260px;height:70px;bottom:-24px;left:-60px}
+  .c4::before{width:110px;height:110px;top:-56px;left:60px}
+  .c4::after{width:80px;height:80px;top:-36px;left:150px}
+
+  .badge{display:inline-block;background:var(--yellow);color:var(--navy);
+    font-weight:900;font-size:14px;padding:4px 16px;border-radius:999px;letter-spacing:.05em}
+  .hero h1{font-size:clamp(44px,12vw,72px);font-weight:900;line-height:1.2;margin:16px 0 8px;
+    text-shadow:0 3px 0 rgba(29,58,92,.18);letter-spacing:.04em}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:28%;
+    background:linear-gradient(180deg,rgba(238,247,253,0) 0%,var(--sky-bg) 100%);pointer-events:none}
+  .hero .logo{display:block;width:min(520px,88vw);height:auto;margin:0 auto;
+    filter:drop-shadow(0 6px 14px rgba(29,58,92,.35))}
+  .hero h1{margin:16px 0 0}
+  .lead{text-align:center;padding:8px 16px 8px;max-width:760px;margin:0 auto}
+  .tagline{font-size:clamp(17px,4.6vw,22px);font-weight:900;color:var(--navy);text-shadow:0 0 12px rgba(255,255,255,.9)}
+  .at{display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+    background:#fff;border:2px solid var(--line);color:var(--navy);border-radius:999px;padding:8px 20px;font-weight:700}
+  .at b{font-size:20px;color:var(--sky-2)}
+  .lead .cta{margin-top:24px}
+  .btn{display:inline-block;background:var(--yellow);color:var(--navy);text-decoration:none;
+    font-weight:900;font-size:17px;padding:14px 32px;border-radius:999px;
+    box-shadow:0 4px 0 var(--yellow-deep);transition:transform .1s}
+  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--yellow-deep)}
+  .hero > *{position:relative;z-index:1}
+
+  /* ===== 目次 ===== */
+  nav.toc{display:flex;gap:8px;overflow-x:auto;padding:16px;max-width:760px;margin:0 auto;
+    scrollbar-width:none}
+  nav.toc::-webkit-scrollbar{display:none}
+  nav.toc a{flex:none;background:#fff;border:2px solid var(--line);color:var(--navy);
+    text-decoration:none;font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px}
+
+  /* ===== セクション ===== */
+  main{max-width:760px;margin:0 auto;padding:8px 16px 48px}
+  section{background:var(--card);border-radius:var(--radius);padding:32px 24px;margin-top:24px;
+    box-shadow:0 2px 0 var(--line)}
+  h2{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;color:var(--navy);
+    line-height:1.4;margin-bottom:16px}
+  h2 .ico{flex:none;width:40px;height:40px;border-radius:50%;background:var(--sky-bg);
+    display:grid;place-items:center;font-size:20px}
+  h3{font-size:18px;font-weight:900;color:var(--navy);margin:20px 0 4px}
+  p + p{margin-top:12px}
+  .note{color:var(--sub);font-size:15px}
+
+  /* 目標 */
+  .goals{display:grid;gap:12px;margin-top:8px}
+  .goal{border-radius:18px;padding:16px 20px;background:var(--sky-bg)}
+  .goal .when{display:inline-block;font-size:13px;font-weight:900;color:#fff;background:var(--sky-2);
+    border-radius:999px;padding:2px 12px}
+  .goal.next .when{background:var(--yellow);color:var(--navy)}
+  .goal .what{font-size:19px;font-weight:900;color:var(--navy);margin-top:6px}
+
+  /* チェックリスト */
+  ul.check{list-style:none;display:grid;gap:10px}
+  ul.check li{position:relative;padding-left:34px}
+  ul.check li::before{content:"";position:absolute;left:0;top:5px;width:22px;height:22px;border-radius:50%;
+    background:var(--yellow) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%231D3A5C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+
+  /* 番号リスト */
+  ol.num{list-style:none;counter-reset:n;display:grid;gap:14px}
+  ol.num > li{counter-increment:n;position:relative;padding-left:44px}
+  ol.num > li::before{content:counter(n);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;
+    background:var(--sky-2);color:#fff;font-weight:900;display:grid;place-items:center;font-size:15px}
+
+  /* ルール */
+  .rules{display:grid;gap:12px}
+  .rule{border:2px solid var(--line);border-radius:18px;padding:16px 18px}
+  .rule h3{margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  .rule h3 .n{flex:none;width:28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;
+    display:grid;place-items:center;font-size:14px}
+  .rule .sub{margin-top:8px;background:var(--sky-bg);border-radius:12px;padding:10px 14px;font-size:15px}
+  .rule .sub b{color:var(--navy)}
+
+  /* 退団 */
+  .why{background:#FFF8DC;border-radius:18px;padding:16px 20px;margin-bottom:16px}
+  .why b{color:var(--navy)}
+
+  /* 入団の流れ */
+  .steps{list-style:none;counter-reset:s;display:grid;gap:0}
+  .steps li{counter-increment:s;position:relative;padding:0 0 24px 56px}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:40px;height:40px;border-radius:50%;
+    background:var(--yellow);color:var(--navy);font-weight:900;font-size:18px;display:grid;place-items:center}
+  .steps li::after{content:"";position:absolute;left:19px;top:40px;bottom:2px;width:2px;background:var(--line)}
+  .steps li:last-child{padding-bottom:0}
+  .steps li:last-child::after{display:none}
+  .idbox{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    margin-top:10px;background:var(--sky-bg);border-radius:14px;padding:10px 14px}
+  .idbox .id{font-size:22px;font-weight:900;color:var(--navy);letter-spacing:.08em}
+  .copy{border:none;background:var(--navy);color:#fff;font-family:inherit;font-weight:700;font-size:14px;
+    padding:8px 16px;border-radius:999px;cursor:pointer}
+
+  /* FAQ */
+  details{border-bottom:2px solid var(--line);padding:14px 0}
+  details:last-child{border-bottom:none}
+  summary{cursor:pointer;font-weight:900;color:var(--navy);list-style:none;position:relative;padding-right:28px}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"Q.";color:var(--sky-2);margin-right:6px}
+  summary::after{content:"＋";position:absolute;right:0;top:0;color:var(--sky-2)}
+  details[open] summary::after{content:"－"}
+  details p{margin-top:8px;padding-left:24px}
+
+  /* 団長より */
+  .message{background:linear-gradient(180deg,#fff 0%,#F4FAFE 100%)}
+  .message .sign{text-align:right;font-weight:900;color:var(--navy);margin-top:16px}
+
+  /* 団長プロフィール */
+  .profile{margin-top:28px;border-top:2px dashed var(--line);padding-top:8px}
+  .profile dl{display:grid;gap:10px;margin-top:12px}
+  .profile dl > div{display:grid;grid-template-columns:7.5em 1fr;gap:8px;align-items:start}
+  .profile dt{font-weight:900;color:var(--sub);font-size:14px;padding-top:3px}
+  .profile dd{display:flex;flex-wrap:wrap;gap:6px}
+  .profile .tag{background:var(--sky-bg);color:var(--navy);font-weight:700;font-size:14px;
+    border-radius:999px;padding:2px 12px}
+  .profile .asof{font-size:13px;color:var(--sub);margin-left:4px;align-self:center}
+  .xembed{margin-top:24px;display:flex;justify-content:center}
+  .xembed .twitter-tweet{margin:0 !important}
+  .xembed blockquote a{font-weight:700}
+
+  /* ===== 見出し（参考サイトの部品：英字ラベル＋ライン＋丸ノード＋◆） ===== */
+  .sec-head{margin-bottom:18px}
+  .sec-head .en{display:flex;align-items:center;gap:8px;font-family:"Cinzel",serif;font-weight:700;
+    font-size:13px;letter-spacing:.14em;color:var(--sky-2);line-height:1.4}
+  .sec-head .en::before{content:"";width:8px;height:8px;background:var(--yellow);transform:rotate(45deg);
+    box-shadow:0 0 0 2px #fff,0 0 0 3px var(--yellow-deep)}
+  .sec-head h2{display:flex;align-items:center;gap:14px;margin:4px 0 0}
+  .sec-head h2 .t{flex:none}
+  .sec-head .hline{flex:1;min-width:24px;height:2px;position:relative;
+    background:linear-gradient(90deg,var(--sky-1),rgba(93,184,240,.15))}
+  .sec-head .hline::after{content:"";position:absolute;right:-6px;top:50%;width:12px;height:12px;border-radius:50%;
+    transform:translateY(-50%);background:var(--sky-2);box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--sky-1)}
+  @media (min-width:640px){
+    main > section:nth-of-type(even) .sec-head{text-align:right}
+    main > section:nth-of-type(even) .sec-head .en{justify-content:flex-end}
+    main > section:nth-of-type(even) .sec-head h2{flex-direction:row-reverse}
+    main > section:nth-of-type(even) .sec-head .hline{background:linear-gradient(270deg,var(--sky-1),rgba(93,184,240,.15))}
+    main > section:nth-of-type(even) .sec-head .hline::after{right:auto;left:-6px}
+  }
+  .en-orn{display:flex;align-items:center;justify-content:center;gap:12px;font-family:"Cinzel",serif;font-weight:700;
+    font-size:14px;letter-spacing:.2em;color:var(--sky-2);margin-bottom:8px}
+  .en-orn::before,.en-orn::after{content:"";width:9px;height:9px;background:var(--yellow);transform:rotate(45deg);
+    box-shadow:0 0 0 2px #fff,0 0 0 3px var(--yellow-deep)}
+
+  /* ===== ふわっと出る動き ===== */
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.is-in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){ .js .reveal{opacity:1;transform:none;transition:none} }
+
+  /* ===== トーン調整：シンプル＋少しかわいい（幼さを抑える） ===== */
+  :root{--radius:14px}
+  body{font-family:"Zen Kaku Gothic New","Hiragino Sans",sans-serif;font-weight:500;letter-spacing:.02em}
+  h2,h3,.goal .what,.btn,.at,.badge{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif}
+  h2{font-size:22px;font-weight:700}
+  h3,.goal .what,.btn,.badge{font-weight:700}
+  section{box-shadow:none;border:1px solid var(--line);padding:32px 24px}
+  .badge{font-size:12px;padding:3px 14px;letter-spacing:.12em}
+  .btn{box-shadow:none;border-radius:10px;padding:13px 36px;font-size:16px;transition:background .2s}
+  .btn:hover{background:var(--yellow-deep)}
+  .btn:active{transform:none;box-shadow:none}
+  .at{border:1px solid var(--line);border-radius:10px;font-weight:500}
+  .at b{font-weight:700}
+  nav.toc a{border:none;background:transparent;border-bottom:1px solid transparent;border-radius:0;
+    padding:4px 6px;font-weight:500;color:var(--sub)}
+  nav.toc a:hover{color:var(--navy);border-bottom-color:var(--yellow)}
+  .goal{border-radius:10px;background:transparent;border:1px solid var(--line)}
+  .goal .when{border-radius:4px;font-weight:700}
+  .rule{border-width:1px;border-radius:10px}
+  .rule h3 .n{border-radius:4px;width:24px;height:24px;font-size:13px;font-family:"Cinzel",serif}
+  .rule .sub{border-radius:8px}
+  .why{border-radius:10px;background:#FFFBEA;border-left:3px solid var(--yellow)}
+  ul.check li{padding-left:24px}
+  ul.check li::before{width:8px;height:8px;top:11px;left:4px;border-radius:0;transform:rotate(45deg);
+    background:var(--yellow);box-shadow:0 0 0 2px #fff,0 0 0 3px var(--yellow-deep)}
+  ol.num > li{padding-left:36px}
+  ol.num > li::before{width:24px;height:24px;font-size:13px;background:transparent;color:var(--sky-2);
+    border:1px solid var(--sky-1);top:3px;font-family:"Cinzel",serif;font-weight:700}
+  .steps li::before{background:#fff;border:1.5px solid var(--yellow-deep);font-family:"Cinzel",serif;font-size:16px;width:36px;height:36px}
+  .steps li::after{left:17px;top:36px;width:1px}
+  .idbox{border-radius:10px}
+  .copy{border-radius:8px}
+  .profile .tag{border-radius:4px;font-weight:500}
+  summary{font-weight:700}
+
+  footer .foot-link{display:inline-block;margin-bottom:10px;font-weight:700;color:var(--sky-2)}
+  footer .rights{display:inline-block;margin-top:8px}
+  footer a{color:var(--sub)}
+  footer{text-align:center;color:var(--sub);font-size:13px;padding:24px 16px 40px;line-height:1.7}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);
+    background:var(--navy);color:#fff;padding:10px 20px;border-radius:999px;font-weight:700;font-size:14px;
+    transition:transform .25s,opacity .25s;z-index:10;opacity:0;pointer-events:none}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+  @media (max-width:639px){ .hero{min-height:440px;background-position:28% center;padding-top:32px} }
+  @media (min-width:640px){
+    section{padding:40px 40px}
+    .goals{grid-template-columns:1fr 1fr}
+  }
+</style>
+
+<style>
+  .sub-hero{background:linear-gradient(180deg,#4FAEEB 0%,#9AD5F6 70%,var(--sky-bg) 100%);text-align:center;padding:28px 16px 36px}
+  .sub-hero .back{display:inline-block;color:#fff;font-size:14px;text-decoration:none;margin-bottom:16px;font-weight:700}
+  .sub-hero .logo-s{width:min(260px,64vw);height:auto;display:block;margin:0 auto 12px;filter:drop-shadow(0 4px 10px rgba(29,58,92,.3))}
+  .sub-hero h1{font-family:"Zen Maru Gothic",sans-serif;font-size:clamp(26px,7vw,36px);color:var(--navy);line-height:1.35;margin:6px 0}
+  .sub-hero .asof-l{font-size:13px;color:var(--navy)}
+  .howto li{margin-bottom:6px}
+  .grid10{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:12px 0 8px}
+  .slot{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;
+    font-size:11px;font-weight:700;line-height:1.3;padding:4px}
+  .s-sera{background:#FFF1C2;color:#8A6400}
+  .s-baha{background:#E9E3FF;color:#5B3FC4}
+  .s-shu{background:#FDE3E1;color:#B23A35}
+  .s-mag{background:#E3F1FC;color:var(--sky-2)}
+  .legend{display:grid;gap:6px;font-size:14px;margin-top:10px}
+  .legend span.dot{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  .calc .box{border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+  .calc .box .k{font-size:13px;color:var(--sub)}
+  .calc .box .v{font-size:20px;font-weight:700;color:var(--navy);margin-top:4px}
+  .calc .box.win{border-color:var(--yellow-deep);background:#FFFBEA}
+  dl.terms{display:grid;gap:10px}
+  dl.terms dt{font-weight:700;color:var(--navy)}
+  dl.terms dd{margin:2px 0 0;font-size:15px}
+  .video{margin-top:14px}
+  .video .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video p{font-size:14px;color:var(--sub);margin-top:6px}
+  .src{font-size:13px;color:var(--sub)}
+  .chain{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 10px;margin:16px 0 6px}
+  .frame-c{position:relative;border:1px solid var(--line);border-radius:10px;padding:10px 6px 8px;text-align:center;background:#fff}
+  .frame-c .ic{width:40px;height:40px;border-radius:10px;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;
+    font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-weight:700;font-size:15px;color:#fff}
+  .frame-c .nm{font-weight:700;color:var(--navy);font-size:13px;line-height:1.3;letter-spacing:-.02em;white-space:nowrap}
+  .frame-c .by{font-size:11.5px;color:var(--sub);line-height:1.4;margin-top:4px}
+  .chain .frame-c:not(:first-child)::before{content:"×";position:absolute;left:-12px;top:50%;transform:translateY(-50%);
+    width:16px;height:16px;border-radius:50%;background:var(--yellow);color:var(--navy);font-size:12px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;line-height:1}
+  .chain .frame-c:nth-child(4)::before{display:none}
+  .ic.c1{background:#5B6F8F}.ic.c2{background:#3E9B5F}.ic.c3{background:var(--sky-2)}
+  .ic.c4{background:#D9534F}.ic.c5{background:#E0A10B}.ic.c6{background:#E2703A}
+  .chain-res{margin-top:6px;border-radius:10px;background:#FFFBEA;border:1px solid var(--yellow-deep);padding:10px 14px;text-align:center;font-weight:700;color:var(--navy)}
+  .chain-res small{display:block;font-weight:500;color:var(--sub);font-size:13px;margin-top:2px}
+</style>
+<script>document.documentElement.className+=" js";</script>
+<style>
+  .place{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;font-size:15px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .place th,.place td{padding:10px 8px;text-align:center;border-bottom:1px solid var(--line)}
+  .place tr:last-child th,.place tr:last-child td{border-bottom:none}
+  .place thead th{background:var(--sky-bg);color:var(--navy);font-size:13px;white-space:nowrap}
+  .place tbody th{text-align:left;color:var(--navy);padding-left:14px;white-space:nowrap}
+  .place .ok{color:var(--sky-2);font-weight:700}
+  .place .ng{color:var(--sub);white-space:nowrap}
+  .place td.ok{white-space:nowrap}
+  .place .na{color:#B8C4D0}
+  .combo{display:grid;gap:10px;margin-top:12px}
+  .combo .row{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff}
+  .combo .stones{display:flex;gap:4px;flex:none}
+  .combo .st{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:"Zen Maru Gothic",sans-serif}
+  .st.m{background:var(--sky-2)} .st.e{background:#E0A10B}
+  .combo .t{font-weight:700;color:var(--navy);font-size:15px}
+  .combo .d{font-size:13.5px;color:var(--text);line-height:1.6;margin-top:2px}
+  .crosslink{display:block;margin-top:16px;padding:12px 14px;border-radius:10px;background:var(--sky-bg);color:var(--navy);text-decoration:none;font-weight:700;font-size:15px}
+  .crosslink small{display:block;font-weight:500;color:var(--sub);font-size:13px}
+  .scr{margin-top:14px}
+  .scr svg{display:block;width:100%;max-width:440px;height:auto;margin:0 auto}
+  .scr svg text{font-family:"Zen Maru Gothic",sans-serif;font-weight:700}
+  .slots{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+  .slots li{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-left-width:6px;border-radius:10px;padding:12px 14px;background:#fff}
+  .slots li.m{border-left-color:#E0A10B} .slots li.s{border-left-color:#8A9BB0} .slots li.a{border-left-color:var(--sky-2)} .slots li.f{border-left-color:#B8C4D0;border-left-style:dashed}
+  .slots .no{flex:none;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:900;display:grid;place-items:center;font-size:15px}
+  .slots li.m .no{background:#E0A10B} .slots li.s .no{background:#8A9BB0} .slots li.a .no{background:var(--sky-2)} .slots li.f .no{background:#B8C4D0}
+  .slots .t{font-weight:900;color:var(--navy)} .slots .t small{display:inline-block;font-weight:500;color:var(--sub);font-size:13px;margin-left:4px}
+  .slots p{font-size:14.5px;margin-top:2px;line-height:1.7}
+  .slots .yes{color:var(--sky-2);font-weight:700} .slots .no-txt{color:var(--sub);font-weight:700}
+  .qa{margin-top:16px;border-radius:10px;background:#FFFBEA;border-left:3px solid var(--yellow);padding:12px 16px}
+  .qa .q{font-weight:900;color:var(--navy)}
+  .qa p{font-size:14.5px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<header class="sub-hero">
+  <a class="back" href="./">← 攻略ノートの一覧へ</a>
+  <img class="logo-s" src="../img/logo.png" alt="ひるブル団" width="1000" height="383">
+  <p class="en-orn"><span>Beginner's Guide</span></p>
+  <h1>はじめての<br>召喚石ガイド</h1>
+  <p class="asof-l">公開：2026年10月30日　／　最終更新：2026年10月30日</p>
+</header>
+
+<main>
+
+  <section class="reveal" id="intro">
+    <div class="sec-head"><p class="en">How to use</p><h2><span class="t">このページの使い方</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <ol class="num howto">
+      <li>「編成画面の見かた」の図で、3種類の枠の違いをつかみます。</li>
+      <li>「基本の考え方」と「召喚石の置き場所」で、どの枠の効果が働くかを確認します。</li>
+      <li>くわしい選び方は、ページ下のおすすめ動画で見てください。</li>
+    </ol>
+    <p class="note" style="margin-top:12px">全部を一度に覚えなくて大丈夫です。わからない言葉は「用語ミニ辞典」で確認できます。</p>
+  </section>
+
+  <section class="reveal" id="screen">
+    <div class="sec-head"><p class="en">Summon screen</p><h2><span class="t">編成画面の見かた</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <p>召喚石の編成画面には、役割のちがう枠が3種類あります。まずは、どの枠がどれなのかを覚えましょう。</p>
+    <div class="scr">
+      <svg viewBox="0 0 360 336" role="img" aria-labelledby="scrT">
+        <title id="scrT">召喚石の編成画面の図。左の大きい枠が①メイン召喚石、右の4枠が②サブ召喚石、下の2枠が③サブ加護召喚石です。</title>
+        <rect x="1" y="1" width="358" height="334" rx="14" fill="#F4F7FA" stroke="#D6E8F5" stroke-width="2"/>
+        <rect x="12" y="12" width="162" height="30" rx="8" fill="#fff" stroke="#D6E8F5"/>
+        <text x="24" y="32" font-size="13" fill="#5A6B80">総合HP</text>
+        <rect x="186" y="12" width="162" height="30" rx="8" fill="#fff" stroke="#D6E8F5"/>
+        <text x="198" y="32" font-size="13" fill="#5A6B80">総合攻撃力</text>
+        <rect x="12" y="54" width="120" height="170" rx="10" fill="#FFF4C9" stroke="#E0A10B" stroke-width="3"/>
+        <text x="72" y="78" font-size="12" fill="#B07D05" text-anchor="middle" letter-spacing="2">MAIN</text>
+        <circle cx="72" cy="128" r="22" fill="#E0A10B"/><text x="72" y="136" font-size="22" fill="#fff" text-anchor="middle">1</text>
+        <text x="72" y="178" font-size="14" fill="#1D3A5C" text-anchor="middle">メイン</text>
+        <text x="72" y="198" font-size="14" fill="#1D3A5C" text-anchor="middle">召喚石</text>
+        <g fill="#EEF2F6" stroke="#8A9BB0" stroke-width="2">
+          <rect x="144" y="54" width="98" height="81" rx="8"/><rect x="250" y="54" width="98" height="81" rx="8"/>
+          <rect x="144" y="143" width="98" height="81" rx="8"/><rect x="250" y="143" width="98" height="81" rx="8"/>
+        </g>
+        <g font-size="13" fill="#1D3A5C" text-anchor="middle">
+          <circle cx="193" cy="84" r="13" fill="#8A9BB0"/><text x="193" y="89" fill="#fff">2</text><text x="193" y="118">サブ召喚石</text>
+          <circle cx="299" cy="84" r="13" fill="#8A9BB0"/><text x="299" y="89" fill="#fff">2</text><text x="299" y="118">サブ召喚石</text>
+          <circle cx="193" cy="173" r="13" fill="#8A9BB0"/><text x="193" y="178" fill="#fff">2</text><text x="193" y="207">サブ召喚石</text>
+          <circle cx="299" cy="173" r="13" fill="#8A9BB0"/><text x="299" y="178" fill="#fff">2</text><text x="299" y="207">サブ召喚石</text>
+        </g>
+        <rect x="12" y="238" width="336" height="86" rx="10" fill="#DDEFFC" stroke="#2E8FD8" stroke-width="2"/>
+        <text x="28" y="274" font-size="14" fill="#1D3A5C">サブ加護</text>
+        <text x="28" y="294" font-size="14" fill="#1D3A5C">召喚石</text>
+        <g fill="#fff" stroke="#2E8FD8" stroke-width="2"><rect x="186" y="248" width="74" height="66" rx="8"/><rect x="268" y="248" width="74" height="66" rx="8"/></g>
+        <g text-anchor="middle"><circle cx="223" cy="281" r="13" fill="#2E8FD8"/><text x="223" y="286" font-size="13" fill="#fff">3</text>
+        <circle cx="305" cy="281" r="13" fill="#2E8FD8"/><text x="305" y="286" font-size="13" fill="#fff">3</text></g>
+      </svg>
+    </div>
+    <p class="note" style="margin-top:6px;text-align:center">実際の画面の配置を、わかりやすく図にしたものです。</p>
+    <ol class="slots">
+      <li class="m"><span class="no">1</span><div><div class="t">メイン召喚石<small>左の大きい枠</small></div><p>自分で選ぶ、いちばん大事な石です。<span class="yes">加護が効きます。</span></p></div></li>
+      <li class="s"><span class="no">2</span><div><div class="t">サブ召喚石<small>右の4枠</small></div><p><span class="no-txt">加護は効きません。</span>バトル中に召喚して使えます。石のHPと攻撃力は、上の総合値に足されます。</p></div></li>
+      <li class="a"><span class="no">3</span><div><div class="t">サブ加護召喚石<small>下の2枠</small></div><p>サブ加護を持つ石を置く、専用の枠です。<span class="yes">サブ加護が働きます。</span>総合値には足されません。</p></div></li>
+      <li class="f"><span class="no">＋</span><div><div class="t">フレンド召喚石<small>この画面にはありません</small></div><p>クエストに出発する前に、一覧から選びます。<span class="yes">加護が効きます。</span></p></div></li>
+    </ol>
+    <div class="qa">
+      <p class="q">「サブ石」って、どの枠のこと？</p>
+      <p>多くの場合、②の右の4枠を指します。③の下の2枠は「サブ加護石」と呼ばれることが多いです。会話で迷ったら、団チャで気軽に聞いてください。</p>
+    </div>
+  </section>
+
+  <section class="reveal" id="basics">
+    <div class="sec-head"><p class="en">Basics</p><h2><span class="t">基本の考え方</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <h3>1. 召喚石には「加護」がある</h3>
+    <p>加護は、バトル中ずっと効き続ける効果です。武器スキルやキャラを強くします。</p>
+
+    <h3>2. 加護が効くのは「メイン」と「フレンド」</h3>
+    <p>自分で選ぶメイン召喚石と、フレンドから借りる召喚石の、2つの加護が効きます。右の4枠（サブ召喚石）と、下の2枠（サブ加護召喚石）に置いた石の加護は効きません。</p>
+
+    <h3>3. 下の2枠で働く「サブ加護」</h3>
+    <p>一部の石は、加護とは別の効果を持っています。これを「サブ加護」と呼びます。サブ加護は、下の2枠（サブ加護召喚石）に置くと働きます。HPアップや与ダメージアップなどがあります。</p>
+
+    <h3>4. 石の種類で、強くなる武器が変わる</h3>
+    <p>マグナ石は、マグナ武器の「方陣」スキルを強くします。神石は、それとは別の種類の武器スキルを強くします。属性石は、属性攻撃力をそのまま上げます。武器の編成に合った石を選びます。</p>
+
+    <h3>5. 上限解放で加護が強くなる</h3>
+    <p>召喚石は、上限解放（凸）すると加護の効果が上がります。</p>
+  </section>
+
+  <section class="reveal" id="place">
+    <div class="sec-head"><p class="en">Slots</p><h2><span class="t">召喚石の置き場所</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <p>どの枠に置いた石の効果が働くかは、次のとおりです。番号は、上の図と同じです。</p>
+    <table class="place">
+      <thead><tr><th>置き場所</th><th>加護</th><th>サブ加護</th></tr></thead>
+      <tbody>
+        <tr><th>① メイン<br><span class="note">左の大きい枠</span></th><td class="ok">◯ 効く</td><td class="na">－</td></tr>
+        <tr><th>② サブ召喚石<br><span class="note">右の4枠</span></th><td class="ng">× 効かない</td><td class="na">－</td></tr>
+        <tr><th>③ サブ加護召喚石<br><span class="note">下の2枠</span></th><td class="ng">× 効かない</td><td class="ok">◯ 働く*</td></tr>
+        <tr><th>＋ フレンド<br><span class="note">出発前に選ぶ</span></th><td class="ok">◯ 効く</td><td class="na">－</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:8px">* サブ加護を持っている石だけです。</p>
+  </section>
+
+  <section class="reveal" id="combo">
+    <div class="sec-head"><p class="en">Combination</p><h2><span class="t">両面・片面の選び方</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <p>メインとフレンドに、どの種類の石を組み合わせるかの考え方です。</p>
+    <div class="combo">
+      <div class="row"><div class="stones"><span class="st m">マ</span><span class="st m">マ</span></div><div><div class="t">両面マグナ</div><div class="d">メインとフレンドの両方をマグナ石にします。マグナ武器が育ってきたら、まずはこれを目指します。</div></div></div>
+      <div class="row"><div class="stones"><span class="st m">マ</span><span class="st e">属</span></div><div><div class="t">片面マグナ＋属性石</div><div class="d">片方をマグナ石、もう片方を属性石にします。</div></div></div>
+      <div class="row"><div class="stones"><span class="st e">属</span><span class="st e">属</span></div><div><div class="t">両面属性</div><div class="d">武器がまだ育っていないうちは、属性石のほうが火力を出しやすいことがあります。</div></div></div>
+    </div>
+    <p class="note" style="margin-top:10px">どれがいちばん強いかは、武器の育ち具合で変わります。くわしい基準は、おすすめ動画3で解説されています。</p>
+    <a class="crosslink" href="magna.html">はじめてのマグナ編成ガイドを読む →<small>マグナ武器と「方陣」スキルのしくみは、こちらで解説しています。</small></a>
+  </section>
+
+  <section class="reveal" id="terms">
+    <div class="sec-head"><p class="en">Words</p><h2><span class="t">用語ミニ辞典</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <dl class="terms">
+      <div><dt>加護（かご）</dt><dd>召喚石が持つ、バトル中ずっと効き続ける効果です。</dd></div>
+      <div><dt>サブ加護</dt><dd>加護とは別の効果です。下の2枠（サブ加護召喚石）に置くと働きます。</dd></div>
+      <div><dt>メイン召喚石</dt><dd>編成画面の左の大きい枠に置く召喚石です。加護が効きます。</dd></div>
+      <div><dt>サブ召喚石</dt><dd>編成画面の右の4枠です。加護は効きません。「サブ石」とも呼ばれます。</dd></div>
+      <div><dt>サブ加護召喚石</dt><dd>編成画面の下の2枠です。サブ加護が働きます。「サブ加護石」とも呼ばれます。</dd></div>
+      <div><dt>フレンド召喚石</dt><dd>バトルの前に、フレンドなどから借りる召喚石です。加護が効きます。</dd></div>
+      <div><dt>両面・片面</dt><dd>メインとフレンドの両方が同じ種類の石なら「両面」、片方だけなら「片面」と呼びます。</dd></div>
+      <div><dt>凸（とつ）</dt><dd>上限解放のことです。凸を進めるほど、加護が強くなります。</dd></div>
+      <div><dt>神石（かみいし）</dt><dd>マグナ石とは別の系統の召喚石です。主にガチャで手に入ります。</dd></div>
+    </dl>
+  </section>
+
+  <section class="reveal" id="videos">
+    <div class="sec-head"><p class="en">Videos</p><h2><span class="t">おすすめ動画</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <p>このページの内容を、動画でくわしく学べます。上から順に見るのがおすすめです。</p>
+    <div class="video">
+      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/lgXojVfXogM" title="おすすめ動画1 加護の基本" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p>おすすめ動画 1：加護の基本</p>
+    </div>
+    <div class="video">
+      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/ESHAGoLBg8w?start=335" title="おすすめ動画2 サブ加護石について" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p>おすすめ動画 2：サブ加護石について（5分35秒から）</p>
+    </div>
+    <div class="video">
+      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/Qtb22R1jbXw?start=309" title="おすすめ動画3 両面・片面の選び方" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p>おすすめ動画 3：両面マグナ・神石、片面属性、両面属性の選び方（5分9秒から）</p>
+    </div>
+    <p class="src" style="margin-top:14px">出典：【要確認：チャンネル名】さんのYouTube動画。このページの文章は、団長がまとめたものです。</p>
+  </section>
+
+  <section class="reveal message" id="msg">
+    <div class="sec-head"><p class="en">Message</p><h2><span class="t">団からのひとこと</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <p>マグナ石は、無課金で進めたい方に特におすすめです。</p>
+    <p>グラブルには、無料でガチャを引けるお祭り（無料100連など）がたくさんあります。そこで神石が当たったら、この記事を参考にしてみてください。武器などの条件がそろえば、神石の編成でも遊べるようになります。</p>
+    <p>マグナ編成と神石編成には、それぞれ強みがあります。最近は、どうしても超えられないほどの差はないと感じています。自分に合ったほうで、気軽に楽しんでください。</p>
+    <p>編成で迷ったら、団チャで気軽に聞いてください。</p>
+  </section>
+
+</main>
+<footer>
+  <a class="foot-link" href="../">ひるブル団のトップへ</a>　<a class="foot-link" href="./">攻略ノートの一覧へ</a><br>
+  このページは、騎空団「ひるブル団」の攻略ノートです。<br>
+  株式会社Cygamesおよび「グランブルーファンタジー」公式とは関係ありません。
+  <br><span class="rights">ゲーム画像の著作権は、株式会社Cygamesに帰属します。© Cygames, Inc.<br>
+  掲載内容に問題がある場合は、<a href="https://x.com/misoshiru_now" target="_blank" rel="noopener">X（@misoshiru_now）</a>までご連絡ください。すぐに削除します。</span>
+</footer>
+
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target);} });
+    },{rootMargin:'0px 0px -10% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
