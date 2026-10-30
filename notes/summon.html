@@ -304,6 +304,8 @@
   .place .ok{color:var(--sky-2);font-weight:700}
   .place .ng{color:var(--sub);white-space:nowrap}
   .place td.ok{white-space:nowrap}
+  #place .place td{font-size:20px;font-weight:700}
+  #place .place td.ng{color:#9AA8B8}
   .place .na{color:#B8C4D0}
   .combo{display:grid;gap:10px;margin-top:12px}
   .combo .row{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff}
@@ -319,15 +321,22 @@
   .scr svg text{font-family:"Zen Maru Gothic",sans-serif;font-weight:700}
   .slots{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
   .slots li{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-left-width:6px;border-radius:10px;padding:12px 14px;background:#fff}
-  .slots li.m{border-left-color:#E0A10B} .slots li.s{border-left-color:#8A9BB0} .slots li.a{border-left-color:var(--sky-2)} .slots li.f{border-left-color:#B8C4D0;border-left-style:dashed}
+  .slots li.m{border-left-color:#E0A10B} .slots li.s{border-left-color:#E5608C} .slots li.a{border-left-color:var(--sky-2)} .slots li.f{border-left-color:#B8C4D0;border-left-style:dashed}
   .slots .no{flex:none;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:900;display:grid;place-items:center;font-size:15px}
-  .slots li.m .no{background:#E0A10B} .slots li.s .no{background:#8A9BB0} .slots li.a .no{background:var(--sky-2)} .slots li.f .no{background:#B8C4D0}
+  .slots li.m .no{background:#E0A10B} .slots li.s .no{background:#E5608C} .slots li.a .no{background:var(--sky-2)} .slots li.f .no{background:#B8C4D0}
   .slots .t{font-weight:900;color:var(--navy)} .slots .t small{display:inline-block;font-weight:500;color:var(--sub);font-size:13px;margin-left:4px}
   .slots p{font-size:14.5px;margin-top:2px;line-height:1.7}
   .slots .yes{color:var(--sky-2);font-weight:700} .slots .no-txt{color:var(--sub);font-weight:700}
   .qa{margin-top:16px;border-radius:10px;background:#FFFBEA;border-left:3px solid var(--yellow);padding:12px 16px}
   .qa .q{font-weight:900;color:var(--navy)}
   .qa p{font-size:14.5px;margin-top:4px}
+  .qa.warn{background:#FFF1EC;border-left-color:#E0663B}
+  .qa.warn .q{color:#B5401A}
+  /* ルール：別の記事（ガイド）へ移動するリンクには、開いた本のアイコンを付ける */
+  .ico-guide{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.25em;margin-right:.35em}
+  .ico-guide svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+  .crosslink .ico-guide{color:var(--navy)}
+  .nw{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -346,7 +355,7 @@
     <div class="sec-head"><p class="en">How to use</p><h2><span class="t">このページの使い方</span><span class="hline" aria-hidden="true"></span></h2></div>
     <ol class="num howto">
       <li>「編成画面の見かた」の図で、3種類の枠の違いをつかみます。</li>
-      <li>「基本の考え方」と「召喚石の置き場所」で、どの枠の効果が働くかを確認します。</li>
+      <li>「詳細画面の見かた」の図で、どの枠に置くと、どの欄の効果が働くかを確認します。</li>
       <li>くわしい選び方は、ページ下のおすすめ動画で見てください。</li>
     </ol>
     <p class="note" style="margin-top:12px">全部を一度に覚えなくて大丈夫です。わからない言葉は「用語ミニ辞典」で確認できます。</p>
@@ -368,15 +377,15 @@
         <circle cx="72" cy="128" r="22" fill="#E0A10B"/><text x="72" y="136" font-size="22" fill="#fff" text-anchor="middle">1</text>
         <text x="72" y="178" font-size="14" fill="#1D3A5C" text-anchor="middle">メイン</text>
         <text x="72" y="198" font-size="14" fill="#1D3A5C" text-anchor="middle">召喚石</text>
-        <g fill="#EEF2F6" stroke="#8A9BB0" stroke-width="2">
+        <g fill="#FDE8EF" stroke="#E5608C" stroke-width="2">
           <rect x="144" y="54" width="98" height="81" rx="8"/><rect x="250" y="54" width="98" height="81" rx="8"/>
           <rect x="144" y="143" width="98" height="81" rx="8"/><rect x="250" y="143" width="98" height="81" rx="8"/>
         </g>
         <g font-size="13" fill="#1D3A5C" text-anchor="middle">
-          <circle cx="193" cy="84" r="13" fill="#8A9BB0"/><text x="193" y="89" fill="#fff">2</text><text x="193" y="118">サブ召喚石</text>
-          <circle cx="299" cy="84" r="13" fill="#8A9BB0"/><text x="299" y="89" fill="#fff">2</text><text x="299" y="118">サブ召喚石</text>
-          <circle cx="193" cy="173" r="13" fill="#8A9BB0"/><text x="193" y="178" fill="#fff">2</text><text x="193" y="207">サブ召喚石</text>
-          <circle cx="299" cy="173" r="13" fill="#8A9BB0"/><text x="299" y="178" fill="#fff">2</text><text x="299" y="207">サブ召喚石</text>
+          <circle cx="193" cy="84" r="13" fill="#E5608C"/><text x="193" y="89" fill="#fff">2</text><text x="193" y="118">サブ召喚石</text>
+          <circle cx="299" cy="84" r="13" fill="#E5608C"/><text x="299" y="89" fill="#fff">2</text><text x="299" y="118">サブ召喚石</text>
+          <circle cx="193" cy="173" r="13" fill="#E5608C"/><text x="193" y="178" fill="#fff">2</text><text x="193" y="207">サブ召喚石</text>
+          <circle cx="299" cy="173" r="13" fill="#E5608C"/><text x="299" y="178" fill="#fff">2</text><text x="299" y="207">サブ召喚石</text>
         </g>
         <rect x="12" y="238" width="336" height="86" rx="10" fill="#DDEFFC" stroke="#2E8FD8" stroke-width="2"/>
         <text x="28" y="274" font-size="14" fill="#1D3A5C">サブ加護</text>
@@ -388,10 +397,10 @@
     </div>
     <p class="note" style="margin-top:6px;text-align:center">実際の画面の配置を、わかりやすく図にしたものです。</p>
     <ol class="slots">
-      <li class="m"><span class="no">1</span><div><div class="t">メイン召喚石<small>左の大きい枠</small></div><p>自分で選ぶ、いちばん大事な石です。<span class="yes">加護が効きます。</span></p></div></li>
-      <li class="s"><span class="no">2</span><div><div class="t">サブ召喚石<small>右の4枠</small></div><p><span class="no-txt">加護は効きません。</span>バトル中に召喚して使えます。石のHPと攻撃力は、上の総合値に足されます。</p></div></li>
-      <li class="a"><span class="no">3</span><div><div class="t">サブ加護召喚石<small>下の2枠</small></div><p>サブ加護を持つ石を置く、専用の枠です。<span class="yes">サブ加護が働きます。</span>総合値には足されません。</p></div></li>
-      <li class="f"><span class="no">＋</span><div><div class="t">フレンド召喚石<small>この画面にはありません</small></div><p>クエストに出発する前に、一覧から選びます。<span class="yes">加護が効きます。</span></p></div></li>
+      <li class="m"><span class="no">1</span><div><div class="t">メイン召喚石<small>左の大きい枠</small></div><p>自分で選ぶ、いちばん大事な石です。<span class="yes">「召喚」と「メイン装備時」が働きます。</span></p></div></li>
+      <li class="s"><span class="no">2</span><div><div class="t">サブ召喚石<small>右の4枠</small></div><p><span class="yes">「召喚」と「サブ装備時」が働きます。</span><span class="no-txt">「メイン装備時」は働きません。</span>石のHPと攻撃力は、上の総合値に足されます。</p></div></li>
+      <li class="a"><span class="no">3</span><div><div class="t">サブ加護召喚石<small>下の2枠</small></div><p><span class="yes">「サブ装備時」だけが働きます。</span>召喚はできません。総合値にも足されません。</p></div></li>
+      <li class="f"><span class="no">＋</span><div><div class="t">フレンド召喚石<small>この画面にはありません</small></div><p>クエストに出発する前に、一覧から選びます。<span class="yes">「召喚」と「メイン装備時」が働きます。</span></p></div></li>
     </ol>
     <div class="qa">
       <p class="q">「サブ石」って、どの枠のこと？</p>
@@ -399,61 +408,110 @@
     </div>
   </section>
 
-  <section class="reveal" id="basics">
-    <div class="sec-head"><p class="en">Basics</p><h2><span class="t">基本の考え方</span><span class="hline" aria-hidden="true"></span></h2></div>
-    <h3>1. 召喚石には「加護」がある</h3>
-    <p>加護は、バトル中ずっと効き続ける効果です。武器スキルやキャラを強くします。</p>
-
-    <h3>2. 加護が効くのは「メイン」と「フレンド」</h3>
-    <p>自分で選ぶメイン召喚石と、フレンドから借りる召喚石の、2つの加護が効きます。右の4枠（サブ召喚石）と、下の2枠（サブ加護召喚石）に置いた石の加護は効きません。</p>
-
-    <h3>3. 下の2枠で働く「サブ加護」</h3>
-    <p>一部の石は、加護とは別の効果を持っています。これを「サブ加護」と呼びます。サブ加護は、下の2枠（サブ加護召喚石）に置くと働きます。HPアップや与ダメージアップなどがあります。</p>
-
-    <h3>4. 石の種類で、強くなる武器が変わる</h3>
-    <p>マグナ石は、マグナ武器の「方陣」スキルを強くします。神石は、それとは別の種類の武器スキルを強くします。属性石は、属性攻撃力をそのまま上げます。武器の編成に合った石を選びます。</p>
-
-    <h3>5. 上限解放で加護が強くなる</h3>
-    <p>召喚石は、上限解放（凸）すると加護の効果が上がります。</p>
+  <section class="reveal" id="detail">
+    <div class="sec-head"><p class="en">Summon details</p><h2><span class="t">詳細画面の見かた</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <p>召喚石の詳細画面は、上から「召喚」「加護」の順に並んでいます。加護の欄は、さらに「メイン装備時」と「サブ装備時」に分かれています。どの欄の効果が働くかは、石を置いた枠で決まります。</p>
+    <div class="scr">
+      <svg viewBox="0 0 360 500" role="img" aria-labelledby="dtlT">
+        <title id="dtlT">召喚石の詳細画面の図。「召喚」は①メイン召喚石、②サブ召喚石、フレンド召喚石で使えます。加護の「メイン装備時」は①メイン召喚石とフレンド召喚石で働きます。「サブ装備時」は②サブ召喚石と③サブ加護召喚石で働きます。</title>
+        <rect x="1" y="1" width="358" height="498" rx="14" fill="#F4F7FA" stroke="#D6E8F5" stroke-width="2"/>
+        <rect x="130" y="12" width="100" height="28" rx="14" fill="#fff" stroke="#D6E8F5"/>
+        <text x="180" y="31" font-size="14" fill="#1D3A5C" text-anchor="middle">召喚</text>
+        <rect x="12" y="48" width="336" height="30" rx="6" fill="#5A6B80"/>
+        <text x="24" y="68" font-size="14" fill="#fff">○○（召喚の名前）</text>
+        <rect x="12" y="84" width="336" height="86" rx="10" fill="#fff" stroke="#C9D6E3" stroke-width="2"/>
+        <g fill="#DCE4EC"><rect x="26" y="96" width="230" height="9" rx="4.5"/><rect x="26" y="112" width="150" height="9" rx="4.5"/></g>
+        <rect x="20" y="132" width="320" height="30" rx="6" fill="#F4F7FA"/>
+        <rect x="20" y="132" width="320" height="30" rx="6" fill="#F4F7FA"/><circle cx="38" cy="147" r="10" fill="#E0A10B"/><text x="38" y="151.5" font-size="12" fill="#fff" text-anchor="middle">1</text><circle cx="62" cy="147" r="10" fill="#E5608C"/><text x="62" y="151.5" font-size="12" fill="#fff" text-anchor="middle">2</text><circle cx="86" cy="147" r="10" fill="#B8C4D0"/><text x="86" y="151.5" font-size="12" fill="#fff" text-anchor="middle">＋</text><text x="104" y="152" font-size="13" fill="#1D3A5C">で使える（バトル中に召喚）</text>
+        <rect x="130" y="182" width="100" height="28" rx="14" fill="#fff" stroke="#D6E8F5"/>
+        <text x="180" y="201" font-size="14" fill="#1D3A5C" text-anchor="middle">加護</text>
+        <rect x="12" y="218" width="336" height="30" rx="6" fill="#1D3A5C"/>
+        <text x="24" y="238" font-size="14" fill="#fff">○○の加護</text>
+        <rect x="12" y="256" width="336" height="128" rx="10" fill="#FFF4C9" stroke="#E0A10B" stroke-width="3"/>
+        <text x="26" y="280" font-size="15" fill="#B07D05">メイン装備時</text>
+        <g fill="#E8D9A8"><rect x="26" y="290" width="220" height="9" rx="4.5"/><rect x="26" y="306" width="170" height="9" rx="4.5"/><rect x="44" y="322" width="160" height="9" rx="4.5"/></g>
+        <text x="26" y="331" font-size="12" fill="#B07D05">◆</text>
+        <rect x="20" y="344" width="320" height="30" rx="6" fill="#fff"/><circle cx="38" cy="359" r="10" fill="#E0A10B"/><text x="38" y="363.5" font-size="12" fill="#fff" text-anchor="middle">1</text><circle cx="62" cy="359" r="10" fill="#B8C4D0"/><text x="62" y="363.5" font-size="12" fill="#fff" text-anchor="middle">＋</text><text x="80" y="364" font-size="13" fill="#1D3A5C">で働く</text>
+        <rect x="12" y="394" width="336" height="94" rx="10" fill="#DDEFFC" stroke="#2E8FD8" stroke-width="3"/>
+        <text x="26" y="418" font-size="15" fill="#1F6FB0">サブ装備時</text>
+        <rect x="26" y="428" width="200" height="9" rx="4.5" fill="#B5D8F2"/>
+        <rect x="20" y="448" width="320" height="30" rx="6" fill="#fff"/><circle cx="38" cy="463" r="10" fill="#E5608C"/><text x="38" y="467.5" font-size="12" fill="#fff" text-anchor="middle">2</text><circle cx="62" cy="463" r="10" fill="#2E8FD8"/><text x="62" y="467.5" font-size="12" fill="#fff" text-anchor="middle">3</text><text x="80" y="468" font-size="13" fill="#1D3A5C">で働く</text>
+      </svg>
+    </div>
+    <p class="note" style="margin-top:6px;text-align:center">実際の詳細画面を、わかりやすく図にしたものです。<br>灰色の線は、効果の文が入る場所です。番号と色は、編成画面の図と同じです。</p>
+    <h3>枠ごとに働く効果</h3>
+    <ol class="slots">
+      <li class="m"><span class="no">1</span><div><div class="t">メイン召喚石</div><p>「召喚」と「メイン装備時」が働きます。◆で始まる行も働きます。</p></div></li>
+      <li class="s"><span class="no">2</span><div><div class="t">サブ召喚石</div><p>「召喚」と「サブ装備時」が働きます。「メイン装備時」は働きません。</p></div></li>
+      <li class="a"><span class="no">3</span><div><div class="t">サブ加護召喚石</div><p>「サブ装備時」だけが働きます。「召喚」は使えません。</p></div></li>
+      <li class="f"><span class="no">＋</span><div><div class="t">フレンド召喚石</div><p>「召喚」と「メイン装備時」が働きます。ただし、◆で始まる行は働きません。◆の行は、自分の①メイン召喚石に置いたときだけ働きます。</p><p>効果の大きさは、フレンドさんの石の凸の段階で決まります。たとえば、自分の石では170%UPでも、フレンドさんの石では150%UPのことがあります。</p></div></li>
+    </ol>
+    <div class="qa warn">
+      <p class="q">ここに注意：②と③のちがい</p>
+      <p>②と③は、どちらも「サブ装備時」が働きます。②は、バトル中に召喚でき、HPと攻撃力も総合値に足されます。③は、召喚できず、総合値にも足されません。③に置けるのは、「サブ装備時」の欄がある石だけです。</p>
+    </div>
+    <h3>③の枠の使いどころ</h3>
+    <p>③には、「サブ装備時」の効果は役に立つけれど、ほかの部分は自分にとってメリットが少ない石を置くのがおすすめです。</p>
+    <ol class="num" style="margin-top:8px">
+      <li>召喚効果をあまり使わない石は、③に置くのがおすすめです。</li>
+      <li>HPや攻撃力が低い石は、③に置くのがおすすめです。</li>
+      <li>召喚効果を使いたい石や、HPや攻撃力が高い石は、②に置くのがおすすめです。</li>
+    </ol>
+    <p style="margin-top:8px">こうすると、②の4枠を、召喚して使いたい石のために空けておけます。</p>
   </section>
 
   <section class="reveal" id="place">
-    <div class="sec-head"><p class="en">Slots</p><h2><span class="t">召喚石の置き場所</span><span class="hline" aria-hidden="true"></span></h2></div>
-    <p>どの枠に置いた石の効果が働くかは、次のとおりです。番号は、上の図と同じです。</p>
+    <div class="sec-head"><p class="en">Quick check</p><h2><span class="t">効果の早見表</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <p>どの枠に置くと、どの欄の効果が働くかを表にまとめました。◯は働く、×は働かない、という意味です。番号は、図と同じです。</p>
     <table class="place">
-      <thead><tr><th>置き場所</th><th>加護</th><th>サブ加護</th></tr></thead>
+      <thead><tr><th>置いた枠</th><th>召喚</th><th>メイン<br>装備時</th><th>サブ<br>装備時</th></tr></thead>
       <tbody>
-        <tr><th>① メイン<br><span class="note">左の大きい枠</span></th><td class="ok">◯ 効く</td><td class="na">－</td></tr>
-        <tr><th>② サブ召喚石<br><span class="note">右の4枠</span></th><td class="ng">× 効かない</td><td class="na">－</td></tr>
-        <tr><th>③ サブ加護召喚石<br><span class="note">下の2枠</span></th><td class="ng">× 効かない</td><td class="ok">◯ 働く*</td></tr>
-        <tr><th>＋ フレンド<br><span class="note">出発前に選ぶ</span></th><td class="ok">◯ 効く</td><td class="na">－</td></tr>
+        <tr><th>① メイン召喚石<br><span class="note">左の大きい枠</span></th><td class="ok">◯</td><td class="ok">◯</td><td class="ng">×</td></tr>
+        <tr><th>② サブ召喚石<br><span class="note">右の4枠</span></th><td class="ok">◯</td><td class="ng">×</td><td class="ok">◯*</td></tr>
+        <tr><th>③ サブ加護召喚石<br><span class="note">下の2枠</span></th><td class="ng">×</td><td class="ng">×</td><td class="ok">◯*</td></tr>
+        <tr><th>＋ フレンド召喚石<br><span class="note">出発前に選ぶ</span></th><td class="ok">◯</td><td class="ok">◯**</td><td class="ng">×</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:8px">* サブ加護を持っている石だけです。</p>
+    <p class="note" style="margin-top:8px">* 「サブ装備時」の欄がある石だけです。<br>** ◆の行は働きません。効果の大きさは、フレンドさんの石の凸の段階で決まります。</p>
+  </section>
+
+  <section class="reveal" id="basics">
+    <div class="sec-head"><p class="en">Basics</p><h2><span class="t">基本の考え方</span><span class="hline" aria-hidden="true"></span></h2></div>
+    <h3>1. 加護は、バトル中ずっと効き続ける</h3>
+    <p>加護は、バトル中ずっと効き続ける効果です。武器スキルやキャラを強くします。どの枠でどの効果が働くかは、「効果の早見表」で確認できます。</p>
+
+    <h3>2. 石の種類で、強くなる武器が変わる</h3>
+    <p>マグナ石は、マグナ武器の「方陣」スキルを強くします。神石は、それとは別の種類の武器スキルを強くします。属性石は、属性攻撃力をそのまま上げます。武器の編成に合った石を選びます。</p>
+
+    <h3>3. 上限解放で加護が強くなる</h3>
+    <p>召喚石は、上限解放（凸）すると加護の効果が上がります。</p>
   </section>
 
   <section class="reveal" id="combo">
     <div class="sec-head"><p class="en">Combination</p><h2><span class="t">両面・片面の選び方</span><span class="hline" aria-hidden="true"></span></h2></div>
-    <p>メインとフレンドに、どの種類の石を組み合わせるかの考え方です。</p>
+    <p>メイン召喚石とフレンド召喚石に、どの種類の石を組み合わせるかの考え方です。</p>
     <div class="combo">
-      <div class="row"><div class="stones"><span class="st m">マ</span><span class="st m">マ</span></div><div><div class="t">両面マグナ</div><div class="d">メインとフレンドの両方をマグナ石にします。マグナ武器が育ってきたら、まずはこれを目指します。</div></div></div>
+      <div class="row"><div class="stones"><span class="st m">マ</span><span class="st m">マ</span></div><div><div class="t">両面マグナ</div><div class="d">メイン召喚石とフレンド召喚石の両方を、マグナ石にします。マグナ武器が育ってきたら、まずはこれを目指します。</div></div></div>
       <div class="row"><div class="stones"><span class="st m">マ</span><span class="st e">属</span></div><div><div class="t">片面マグナ＋属性石</div><div class="d">片方をマグナ石、もう片方を属性石にします。</div></div></div>
       <div class="row"><div class="stones"><span class="st e">属</span><span class="st e">属</span></div><div><div class="t">両面属性</div><div class="d">武器がまだ育っていないうちは、属性石のほうが火力を出しやすいことがあります。</div></div></div>
     </div>
     <p class="note" style="margin-top:10px">どれがいちばん強いかは、武器の育ち具合で変わります。くわしい基準は、おすすめ動画3で解説されています。</p>
-    <a class="crosslink" href="magna.html">はじめてのマグナ編成ガイドを読む →<small>マグナ武器と「方陣」スキルのしくみは、こちらで解説しています。</small></a>
+    <a class="crosslink" href="magna.html"><span class="ico-guide" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6.8C9 4.9 5.6 4.6 2.5 5.6v13c3.1-1 6.5-.7 9.5 1.2 3-1.9 6.4-2.2 9.5-1.2v-13c-3.1-1-6.5-.7-9.5 1.2zM12 6.8v13"/></svg></span>はじめてのマグナ編成<span class="nw">ガイドを読む →</span><small>マグナ武器と「方陣」スキルのしくみは、こちらで解説しています。</small></a>
   </section>
 
   <section class="reveal" id="terms">
     <div class="sec-head"><p class="en">Words</p><h2><span class="t">用語ミニ辞典</span><span class="hline" aria-hidden="true"></span></h2></div>
     <dl class="terms">
-      <div><dt>加護（かご）</dt><dd>召喚石が持つ、バトル中ずっと効き続ける効果です。</dd></div>
-      <div><dt>サブ加護</dt><dd>加護とは別の効果です。下の2枠（サブ加護召喚石）に置くと働きます。</dd></div>
-      <div><dt>メイン召喚石</dt><dd>編成画面の左の大きい枠に置く召喚石です。加護が効きます。</dd></div>
-      <div><dt>サブ召喚石</dt><dd>編成画面の右の4枠です。加護は効きません。「サブ石」とも呼ばれます。</dd></div>
-      <div><dt>サブ加護召喚石</dt><dd>編成画面の下の2枠です。サブ加護が働きます。「サブ加護石」とも呼ばれます。</dd></div>
-      <div><dt>フレンド召喚石</dt><dd>バトルの前に、フレンドなどから借りる召喚石です。加護が効きます。</dd></div>
-      <div><dt>両面・片面</dt><dd>メインとフレンドの両方が同じ種類の石なら「両面」、片方だけなら「片面」と呼びます。</dd></div>
+      <div><dt>加護（かご）</dt><dd>召喚石が持つ、バトル中ずっと効き続ける効果です。詳細画面の加護の欄は、「メイン装備時」と「サブ装備時」の2つに分かれています。</dd></div>
+      <div><dt>召喚（しょうかん）</dt><dd>詳細画面のいちばん上の欄です。バトル中に呼び出して使う効果です。①メイン召喚石、②サブ召喚石、フレンド召喚石で使えます。</dd></div>
+      <div><dt>メイン装備時</dt><dd>加護の欄の上の部分です。①メイン召喚石と、フレンド召喚石で働きます。</dd></div>
+      <div><dt>サブ装備時</dt><dd>加護の欄の下の部分です。②サブ召喚石と、③サブ加護召喚石で働きます。</dd></div>
+      <div><dt>サブ加護</dt><dd>「サブ装備時」の効果を、こう呼ぶ人もいます。③サブ加護召喚石の名前にも使われています。</dd></div>
+      <div><dt>メイン召喚石</dt><dd>編成画面の左の大きい枠（①）です。「召喚」と「メイン装備時」が働きます。</dd></div>
+      <div><dt>サブ召喚石</dt><dd>編成画面の右の4枠（②）です。「召喚」と「サブ装備時」が働きます。「サブ石」とも呼ばれます。</dd></div>
+      <div><dt>サブ加護召喚石</dt><dd>編成画面の下の2枠（③）です。「サブ装備時」だけが働きます。召喚はできません。「サブ加護石」とも呼ばれます。</dd></div>
+      <div><dt>フレンド召喚石</dt><dd>クエストに出発する前に、フレンドなどから借りる召喚石です。「召喚」と「メイン装備時」が働きます。</dd></div>
+      <div><dt>両面・片面</dt><dd>メイン召喚石とフレンド召喚石が同じ種類の石なら「両面」、片方だけなら「片面」と呼びます。</dd></div>
       <div><dt>凸（とつ）</dt><dd>上限解放のことです。凸を進めるほど、加護が強くなります。</dd></div>
       <div><dt>神石（かみいし）</dt><dd>マグナ石とは別の系統の召喚石です。主にガチャで手に入ります。</dd></div>
     </dl>
@@ -463,18 +521,18 @@
     <div class="sec-head"><p class="en">Videos</p><h2><span class="t">おすすめ動画</span><span class="hline" aria-hidden="true"></span></h2></div>
     <p>このページの内容を、動画でくわしく学べます。上から順に見るのがおすすめです。</p>
     <div class="video">
-      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/lgXojVfXogM" title="おすすめ動画1 加護の基本" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      <p>おすすめ動画 1：加護の基本</p>
+      <div class="frame"><iframe referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/lgXojVfXogM" title="おすすめ動画1 加護の基本" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p>おすすめ動画 1：加護の基本（ウィズさん）</p>
     </div>
     <div class="video">
-      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/ESHAGoLBg8w?start=335" title="おすすめ動画2 サブ加護石について" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      <p>おすすめ動画 2：サブ加護石について（5分35秒から）</p>
+      <div class="frame"><iframe referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/ESHAGoLBg8w?start=335" title="おすすめ動画2 サブ加護石について" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p>おすすめ動画 2：サブ加護石について（れもんさん・5分35秒から）</p>
     </div>
     <div class="video">
-      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/Qtb22R1jbXw?start=309" title="おすすめ動画3 両面・片面の選び方" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      <p>おすすめ動画 3：両面マグナ・神石、片面属性、両面属性の選び方（5分9秒から）</p>
+      <div class="frame"><iframe referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/Qtb22R1jbXw?start=309" title="おすすめ動画3 両面・片面の選び方" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p>おすすめ動画 3：両面マグナ・神石、片面属性、両面属性の選び方（みざちゃんねるさん・5分9秒から）</p>
     </div>
-    <p class="src" style="margin-top:14px">出典：【要確認：チャンネル名】さんのYouTube動画。このページの文章は、団長がまとめたものです。</p>
+    <p class="src" style="margin-top:14px">出典：ウィズさん、れもんさん、みざちゃんねるさんのYouTube動画。このページの文章は、団長がまとめたものです。</p>
   </section>
 
   <section class="reveal message" id="msg">

@@ -293,6 +293,11 @@
   .ic.c4{background:#D9534F}.ic.c5{background:#E0A10B}.ic.c6{background:#E2703A}
   .chain-res{margin-top:6px;border-radius:10px;background:#FFFBEA;border:1px solid var(--yellow-deep);padding:10px 14px;text-align:center;font-weight:700;color:var(--navy)}
   .chain-res small{display:block;font-weight:500;color:var(--sub);font-size:13px;margin-top:2px}
+  /* ルール：別の記事（ガイド）へ移動するリンクには、開いた本のアイコンを付ける */
+  .ico-guide{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.25em;margin-right:.35em}
+  .ico-guide svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+  .crosslink .ico-guide{color:var(--navy)}
+  .nw{white-space:nowrap}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>
@@ -345,7 +350,7 @@
     <h3>3. 「方陣」スキルは、マグナ召喚石で強くなる</h3>
     <p>マグナ武器には、名前に「方陣」とつくスキルがあります。このスキルは、マグナ召喚石を選ぶと効果が大きく上がります。武器と召喚石を組み合わせて使うのが、マグナ編成の基本です。</p>
 
-    <p style="margin-top:8px"><a href="summon.html">召喚石の「加護」と両面・片面の選び方は、はじめての召喚石ガイドへ →</a></p>
+    <p style="margin-top:8px"><a href="summon.html"><span class="ico-guide" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6.8C9 4.9 5.6 4.6 2.5 5.6v13c3.1-1 6.5-.7 9.5 1.2 3-1.9 6.4-2.2 9.5-1.2v-13c-3.1-1-6.5-.7-9.5 1.2zM12 6.8v13"/></svg></span>召喚石の「加護」と両面・片面の選び方は、はじめての<span class="nw">召喚石ガイドへ →</span></a></p>
 
     <h3>4. 新しい武器は「役割」で入れ替える</h3>
     <p>新しい武器を手に入れたら、まずスキルの種類を確認します。そのうえで、同じ役割を持つ武器と入れ替えます。</p>
@@ -382,7 +387,7 @@
       <div><dt>方陣渾身（こんしん）</dt><dd>HPの残りの割合が高いほど、攻撃力が上がるスキルです。</dd></div>
       <div><dt>背水（はいすい）</dt><dd>渾身の反対です。HPの残りの割合が低いほど、攻撃力が上がります。</dd></div>
       <div><dt>方陣技巧（ぎこう）</dt><dd>クリティカルが出る確率を上げるスキルです。</dd></div>
-      <div><dt>両面マグナ</dt><dd>自分の召喚石とフレンドの召喚石を、両方ともマグナ石にすることです。方陣スキルがさらに強くなります。</dd></div>
+      <div><dt>両面マグナ</dt><dd>メイン召喚石とフレンド召喚石を、両方ともマグナ石にすることです。方陣スキルがさらに強くなります。</dd></div>
       <div><dt>クリ確定</dt><dd>クリティカルが毎回必ず出る状態のことです。両面マグナと方陣技巧の武器を組み合わせて作ります。</dd></div>
     </dl>
     <p class="note" style="margin-top:12px">※渾身と背水の「HP」は、HPの数値そのものではありません。最大HPを100%としたときの、残りの割合で決まります。</p>
@@ -392,11 +397,11 @@
     <div class="sec-head"><p class="en">Videos</p><h2><span class="t">おすすめ動画</span><span class="hline" aria-hidden="true"></span></h2></div>
     <p>このページの考え方は、次の動画で学びました。数字やくわしい組み方は、動画で確認してください。</p>
     <div class="video">
-      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/IkN_rcMahjA" title="おすすめ動画1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="frame"><iframe referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/IkN_rcMahjA" title="おすすめ動画1" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
       <p>おすすめ動画 1（田楽さん）</p>
     </div>
     <div class="video">
-      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/ON_AYOri_S4" title="おすすめ動画2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="frame"><iframe referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/ON_AYOri_S4" title="おすすめ動画2" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
       <p>おすすめ動画 2（田楽さん）</p>
     </div>
     <p class="src" style="margin-top:14px">出典：<a href="https://www.youtube.com/@田楽" target="_blank" rel="noopener">田楽</a>さんのYouTube動画。このページの文章は、動画を見て団長がまとめたものです。</p>
